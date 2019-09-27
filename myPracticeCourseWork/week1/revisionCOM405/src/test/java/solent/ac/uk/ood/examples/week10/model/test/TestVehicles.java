@@ -29,7 +29,6 @@ public class TestVehicles {
     public void lorry(){
         Vehicle lorry = new Lorry();
         lorry.setWeight(9000.00);
-             System.out.println(lorry);
         double fee = lorry.calculateFee();
         System.out.println(fee); 
         assertEquals(15.00, fee, 0);
@@ -42,5 +41,12 @@ public class TestVehicles {
         System.out.println(fee); 
         assertEquals(10.00, fee, 0);
     }
- 
+    @Test
+    public void car(){
+        Vehicle car = new Car();
+        car.setWeight(1900.00);
+        double fee = car.calculateFee();
+        System.out.println(fee);
+        assertEquals(5.4, fee, 0);
+    }
 }
