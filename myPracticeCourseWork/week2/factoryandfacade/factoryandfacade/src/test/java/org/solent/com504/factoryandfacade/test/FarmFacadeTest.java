@@ -8,6 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.solent.com504.factoryandfacade.model.Animal;
 import org.solent.com504.factoryandfacade.model.AnimalObjectFactory;
+import org.solent.com504.factoryandfacade.model.Duck;
 import org.solent.com504.factoryandfacade.model.FarmFacade;
 
 /**
@@ -45,5 +46,11 @@ public class FarmFacadeTest {
         FarmFacade farmFacade = AnimalObjectFactory.createFarmFacade();
         farmFacade.addCow("moo");
         farmFacade.getAllAnimals();
+    }
+    @Test
+    public void duckSound(){
+        Duck bob = new Duck();
+        bob.setName("bob");
+        System.out.print(bob.getSound());
     }
 }

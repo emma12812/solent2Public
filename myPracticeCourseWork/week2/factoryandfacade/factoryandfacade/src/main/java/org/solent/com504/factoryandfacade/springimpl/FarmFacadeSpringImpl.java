@@ -30,5 +30,8 @@ public class FarmFacadeSpringImpl implements FarmFacade {
     public void addCow(String name) {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
-    
+
+    public void addDuck(String name){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
