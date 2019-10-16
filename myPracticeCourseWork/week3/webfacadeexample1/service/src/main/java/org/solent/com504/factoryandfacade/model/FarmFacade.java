@@ -6,7 +6,7 @@ public interface FarmFacade {
 
     public List<Animal> getAllAnimals();
 
-    public boolean addAnimal(String animalType, String name);
+    public boolean addAnimal(String animalType, String name, String address);
 
     public List<Animal> getAnimalsOfType(String animalType);
     

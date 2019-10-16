@@ -26,13 +26,14 @@
     }
     List<String> supportedAnimalTypes = (List<String>) session.getAttribute("supportedAnimalTypes");
 
-    farmFacade.addAnimal("Dog", "bob");
-    farmFacade.addAnimal("Cat", "jim");
+    farmFacade.addAnimal("Dog", "bob", "18 storm close");
+    farmFacade.addAnimal("Cat", "jim", "19 alter road");
 
     String x = request.getParameter("animalType");
     String y = request.getParameter("animalName");
+    String z = request.getParameter("animalAddress");
 
-    if (x != null && y != null) farmFacade.addAnimal(x, y);
+    if (x != null && y != null && z != null) farmFacade.addAnimal(x, y,z);
 
 %>
 
@@ -63,6 +64,7 @@
         <th>Type</th>
         <th>Name</th>
         <th>Sound</th>
+        <th>Address</th>
     </tr>
     <% for (Animal animal : farmFacade.getAllAnimals()) {%>
     <tr>
@@ -72,23 +74,29 @@
         </td>
         <td><%=animal.getSound()%>
         </td>
+        <td><%=animal.getAddress()%>
+        </td>
     </tr>
     <%
         }
     %>
 </table>
-    Animal Type:<br>
-    <input type="text" id="animalType" name="animalType" value="">
-    <br>
-    Animal name:<br>
-    <input type="text" id="animalName" name="animalName" value="">
-    <br><br>
-    <input type="submit" value="Submit" onclick="submit()">
+Animal Type:<br>
+<input type="text" id="animalType" name="animalType" value="">
+<br>
+Animal name:<br>
+<input type="text" id="animalName" name="animalName" value="">
+<br>
+Animal Address<br>
+<input type="text" id="animalAddress" name="animalAddress" value="">
+<br><br>
+<input type="submit" value="Submit" onclick="submit()">
 <script>
     function submit() {
         var x = document.getElementById("animalType").value;
         var y = document.getElementById("animalName").value;
-        window.location.href = "http://localhost:8080/basicfacadeweb/example2.jsp?animalType=" + x + "&animalName=" + y;
+        var z = document.getElementById("animalAddress").value;
+        window.location.href = "http://localhost:8080/basicfacadeweb/example2.jsp?animalType=" + x + "&animalName=" + y +"&animalAddress=" + z;
     }
 </script>
 </body>

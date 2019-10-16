@@ -9,4 +9,8 @@ public interface Animal {
     public void setName(String name);
 
     public String getName();
+
+    public String getAddress();
+
+    public void setAddress(String address);
 }

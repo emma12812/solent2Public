@@ -18,7 +18,7 @@ public class FarmFacadeImpl implements FarmFacade {
     }
 
     @Override
-    public boolean addAnimal(String animalType, String name) {
+    public boolean addAnimal(String animalType, String name, String address) {
         // check if animal with this name already exists. if yes return false
         if (getAnimal(name) != null) {
             return false;
@@ -27,6 +27,7 @@ public class FarmFacadeImpl implements FarmFacade {
         // if animal doesnt exist add animal to farm
         Animal animal = farmObjectFactory.createAnimal(animalType);
         animal.setName(name);
+        animal.setAddress(address);
         animals.add(animal);
         return true;
     }

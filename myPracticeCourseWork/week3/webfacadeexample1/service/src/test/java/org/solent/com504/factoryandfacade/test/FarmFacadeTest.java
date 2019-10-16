@@ -73,7 +73,8 @@ public class FarmFacadeTest {
         for (int i = 0; i < 3; i++) {
             for (String animalType : supportedAnimalTypes) {
                 String name = animalType + "_" + i;
-                farmFacade.addAnimal(animalType, name);
+                String address = animalType + "_" + i;
+                farmFacade.addAnimal(animalType, name, address );
             }
         }
 

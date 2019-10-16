@@ -5,12 +5,20 @@ import org.solent.com504.factoryandfacade.model.Animal;
 public abstract class AbstractAnimal implements Animal {
     
     String name = null;
+    String address = null;
 
     @Override
     public String getName() {
         return name;
     }
-
+    @Override
+    public String getAddress(){
+        return address;
+    }
+    @Override
+    public void setAddress(String address){
+        this.address = address;
+    }
     @Override
     public void setName(String name) {
         this.name = name;
@@ -31,8 +39,7 @@ public abstract class AbstractAnimal implements Animal {
                 + " sound="+getSound()
                 + "}";
     }
-    
-    
+
     
  
     
