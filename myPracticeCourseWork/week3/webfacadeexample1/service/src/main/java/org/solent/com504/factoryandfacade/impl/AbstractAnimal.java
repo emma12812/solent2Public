@@ -6,6 +6,7 @@ public abstract class AbstractAnimal implements Animal {
     
     String name = null;
     String address = null;
+    String animalID = null;
 
     @Override
     public String getName() {
@@ -24,6 +25,12 @@ public abstract class AbstractAnimal implements Animal {
         this.name = name;
     }
 
+    @Override
+    public void setID(String animalID){
+        this.animalID = animalID;
+    }
+    @Override
+    public String getAnimalID(){return  animalID;}
     // Abstract methods
     
     @Override

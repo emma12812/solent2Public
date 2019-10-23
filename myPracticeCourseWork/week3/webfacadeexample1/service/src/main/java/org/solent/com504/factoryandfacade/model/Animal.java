@@ -13,4 +13,8 @@ public interface Animal {
     public String getAddress();
 
     public void setAddress(String address);
+
+    public String getAnimalID();
+
+    public void setID(String animalID);
 }

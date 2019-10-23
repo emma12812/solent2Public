@@ -26,14 +26,22 @@
     }
     List<String> supportedAnimalTypes = (List<String>) session.getAttribute("supportedAnimalTypes");
 
-    farmFacade.addAnimal("Dog", "bob", "18 storm close");
-    farmFacade.addAnimal("Cat", "jim", "19 alter road");
-
+    String ID = request.getParameter("animalID");
     String x = request.getParameter("animalType");
     String y = request.getParameter("animalName");
     String z = request.getParameter("animalAddress");
+    String add = request.getParameter("add");
+    System.out.println(add);
 
-    if (x != null && y != null && z != null) farmFacade.addAnimal(x, y,z);
+    if(add != null) {
+        if (x != null && y != null && z != null && add.equals("add")) {
+            farmFacade.addAnimal(ID, x, y, z);
+        } else if (add.equals("remove")) {
+            farmFacade.removeAnimal(ID);
+        }
+    }
+
+
 
 %>
 
@@ -43,8 +51,6 @@
     <title>JSP Page Farm</title>
 </head>
 <body>
-<%=x%>
-<%=y%>
 <p>Page for Farm</p>
 <p>Supported Animal Types</p>
 <table>
@@ -61,6 +67,7 @@
 <p>Animals on Farm</p>
 <table>
     <tr>
+        <th>Animal ID</th>
         <th>Type</th>
         <th>Name</th>
         <th>Sound</th>
@@ -68,6 +75,8 @@
     </tr>
     <% for (Animal animal : farmFacade.getAllAnimals()) {%>
     <tr>
+        <td><%=animal.getAnimalID()%>
+        </td>
         <td><%=animal.getAnimalType()%>
         </td>
         <td><%=animal.getName()%>
@@ -81,6 +90,9 @@
         }
     %>
 </table>
+Animal ID:<br>
+<input type="text" id="animalID" name="animalID" value="">
+<br>
 Animal Type:<br>
 <input type="text" id="animalType" name="animalType" value="">
 <br>
@@ -90,13 +102,31 @@ Animal name:<br>
 Animal Address<br>
 <input type="text" id="animalAddress" name="animalAddress" value="">
 <br><br>
-<input type="submit" value="Submit" onclick="submit()">
+<input type="submit" value="Add Animal" onclick="submit()">
+<br><br>
+<input type="submit" value="Remove Animal" onclick="remove()">
+<br><br>
+<input type="submit" value="Edit Animal" onclick="newPage()">
 <script>
     function submit() {
+        var id = document.getElementById("animalID").value;
         var x = document.getElementById("animalType").value;
         var y = document.getElementById("animalName").value;
         var z = document.getElementById("animalAddress").value;
-        window.location.href = "http://localhost:8080/basicfacadeweb/example2.jsp?animalType=" + x + "&animalName=" + y +"&animalAddress=" + z;
+        var add = "add";
+        window.location.href = "http://localhost:8080/basicfacadeweb/example2.jsp?animalID=" + id + "&animalType=" + x + "&animalName=" + y +"&animalAddress=" + z + "&add=" + add;
+    }
+</script>
+<script>
+    function remove(){
+        var id = document.getElementById("animalID").value;
+        var add = "remove";
+        window.location.href = "http://localhost:8080/basicfacadeweb/example2.jsp?animalID=" + id + "&add=" + add;
+    }
+</script>
+<script>
+    function newPage(){
+
     }
 </script>
 </body>

@@ -1,8 +1,7 @@
-package org.solent.com504.factoryandfacade.impl;
+package org.solent.com504.  factoryandfacade.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
+
 import org.solent.com504.factoryandfacade.model.Animal;
 import org.solent.com504.factoryandfacade.model.FarmFacade;
 import org.solent.com504.factoryandfacade.model.FarmObjectFactory;
@@ -18,7 +17,7 @@ public class FarmFacadeImpl implements FarmFacade {
     }
 
     @Override
-    public boolean addAnimal(String animalType, String name, String address) {
+    public boolean addAnimal(String animalID, String animalType, String name, String address) {
         // check if animal with this name already exists. if yes return false
         if (getAnimal(name) != null) {
             return false;
@@ -28,6 +27,7 @@ public class FarmFacadeImpl implements FarmFacade {
         Animal animal = farmObjectFactory.createAnimal(animalType);
         animal.setName(name);
         animal.setAddress(address);
+        animal.setID(animalID);
         animals.add(animal);
         return true;
     }
@@ -64,15 +64,16 @@ public class FarmFacadeImpl implements FarmFacade {
     }
 
     @Override
-    public void removeAnimal(String name) {
+    public boolean removeAnimal(String animalID) {
         // iterate through animal list and remove entry corresponding to name
         ListIterator<Animal> animalIterator = animals.listIterator();
         while (animalIterator.hasNext()) {
             Animal animal = animalIterator.next();
-            if (name.equals(animal.getName())) {
+            if (animalID.equals(animal.getAnimalID())) {
                 animalIterator.remove();
+                return true;
             }
         }
-
+        return false;
     }
 }

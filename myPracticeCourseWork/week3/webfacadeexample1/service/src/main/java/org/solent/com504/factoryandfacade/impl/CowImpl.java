@@ -13,4 +13,5 @@ public class CowImpl extends AbstractAnimal implements Cow {
     public String getAnimalType() {
         return Cow.ANIMAL_TYPE;
     }
+
 }
