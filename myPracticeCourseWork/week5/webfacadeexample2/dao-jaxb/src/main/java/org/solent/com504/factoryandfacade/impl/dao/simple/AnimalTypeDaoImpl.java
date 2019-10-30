@@ -26,7 +26,7 @@ public class AnimalTypeDaoImpl implements AnimalTypeDao {
 
     }
 
-    // this is not sunchronized so only call at initialisation~
+    // this is not sunchronized so only call at initialisation
     public void setSupportedAnimalTypes(List<AnimalType> supportedAnimalTypes) {
         this.supportedAnimalTypes = supportedAnimalTypes;
     }
